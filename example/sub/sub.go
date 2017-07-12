@@ -6,10 +6,10 @@ import (
 
 // Run sub
 func Run() {
-	logger.Info("sub: info")
-	logger.Debug("sub: debug")
+	logger.Info("info")
+	logger.Debug("debug")
 
-	context := logger.WithFields(logger.Fields{"func": "sub.Run"})
-	context.Error("sub: error")
-	context.Debug("sub: debug")
+	context := logger.WithFields(logger.Fields{"context": "Run"})
+	context.Error("error")
+	context.Debug("debug")
 }

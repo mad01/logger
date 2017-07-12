@@ -3,6 +3,7 @@ package logger
 import (
 	"os"
 
+	"github.com/mad01/logger/formatter"
 	"github.com/sirupsen/logrus"
 )
 
@@ -16,7 +17,11 @@ type Fields map[string]interface{}
 func Init(debug bool) {
 
 	logrus.SetOutput(os.Stdout)
-	logrus.SetFormatter(&logrus.TextFormatter{})
+	// logrus.SetFormatter(&formatter.TextExtendedFormatter{ShowLn: true})
+	logrus.SetFormatter(&formatter.TextFormatter{
+		ShowLn:           true,
+		DisableTimestamp: true,
+	})
 
 	// Only log the warning severity or above.
 	if debug {
