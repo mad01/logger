@@ -72,3 +72,8 @@ func WithFields(fields Fields) *logrus.Entry {
 	}
 	return logrus.WithFields(context)
 }
+
+// Fatal log proxy
+func Fatal(args ...interface{}) {
+	logrus.Fatal(args)
+}
