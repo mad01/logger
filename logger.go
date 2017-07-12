@@ -6,6 +6,12 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
+// Entry copy of logrus
+type Entry *logrus.Entry
+
+// Fields copy of logrus
+type Fields map[string]interface{}
+
 // Init func to set current log context
 func Init(debug bool) {
 
@@ -59,6 +65,10 @@ func Debugf(format string, args ...interface{}) {
 }
 
 // WithFields log proxy
-func WithFields(fields logrus.Fields) *logrus.Entry {
-	return logrus.WithFields(fields)
+func WithFields(fields Fields) *logrus.Entry {
+	context := make(logrus.Fields)
+	for k, v := range fields {
+		context[k] = v
+	}
+	return logrus.WithFields(context)
 }
